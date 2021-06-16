@@ -1,0 +1,74 @@
+<div class="container">
+
+  <mat-card class="example-card giris">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Kullanıcı Giriş</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <mat-form-field appearance="legacy">
+        <mat-label>Kullanıcı Mail</mat-label>
+        <input matInput placeholder="Kullanıcı Mail" name="kullaniciMail" #kullaniciMail>
+        <mat-icon matSuffix>mail</mat-icon>
+      </mat-form-field>
+
+      <br>
+      <mat-form-field appearance="legacy">
+        <mat-label>Kullanıcı Şifre</mat-label>
+        <input matInput type="password" placeholder="Kullanıcı Şifre" name="parola" #kullaniciParola>
+        <mat-icon matSuffix>password</mat-icon>
+      </mat-form-field>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-button style="display:block;background-color: cornflowerblue;color:white;width: 210px;" 
+      (click)="this.kullaniciGiris(kullaniciMail.value,kullaniciParola.value)" >Giriş Yap</button>
+
+    </mat-card-actions>
+    <strong *ngIf="this.girisSonuc"> {{this.girisDurum}} </strong>
+  </mat-card>
+<form ngForm="ngform"  (ngSubmit)="kullaniciKayit()">
+  <mat-card class="example-card-1">
+    <img src="../../assets/merso.jpg" style="float: right;width:320px;height: 310px;margin-left: 50px;" alt="">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Kullanıcı Kayıt</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field appearance="legacy">
+        <mat-label>Ad Soyad</mat-label>
+        <input matInput placeholder="Kullanıcı Adı"   [(ngModel)]="kullanicim.adSoyad"   name="adSoyad" >
+        <mat-icon matSuffix>personel</mat-icon>
+      </mat-form-field>
+  <br>
+      <mat-form-field appearance="legacy">
+        <mat-label>Kullanıcı Mail</mat-label>
+        <input matInput placeholder="Kullanıcı Mail" [(ngModel)]="kullanicim.mail"   name="mail">
+        <mat-icon matSuffix>mail</mat-icon>
+      </mat-form-field>
+
+      <br>
+      <mat-form-field appearance="legacy">
+        <mat-label>Kullanıcı Şifre</mat-label>
+        <input matInput type="password" placeholder="Kullanıcı Şifre" [(ngModel)]="kullanicim.parola"   name="parola">
+        <mat-icon matSuffix>password</mat-icon>
+      </mat-form-field>
+<br>
+      <mat-form-field appearance="legacy">
+        <mat-label>Kullanıcı Telefon</mat-label>
+        <input matInput placeholder="Kullanıcı Telefon" [(ngModel)]="kullanicim.kullaniciTel"   name="kullaniciTel">
+        <mat-icon matSuffix>phone</mat-icon>
+      </mat-form-field>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-button style="display:block;background-color: cornflowerblue;color:white;width: 210px;" >Kayıt Ol</button>
+    </mat-card-actions>
+    <div *ngIf="this.sonucum.islem" style="background-color:rgb(27, 163, 100);height: 40px;text-align: center;">{{this.sonucum.mesaj}}</div>
+    
+  </mat-card>
+</form>
+</div>

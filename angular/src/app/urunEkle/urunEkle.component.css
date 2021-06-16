@@ -1,0 +1,11 @@
+.container {
+  width: 500px;
+  margin: 70px auto;
+}
+.baslik {
+  font-family: "Montserrat" sans-serif;
+  font-size: 32px;
+}
+mat-card-content mat-form-field {
+  width: 450px;
+}

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db01ModelStoreContainer" CdmEntityContainer="db01Entities1">
+    <EntitySetMapping Name="Favoriler">
+      <EntityTypeMapping TypeName="db01Model.Favoriler">
+        <MappingFragment StoreEntitySet="Favoriler">
+          <ScalarProperty Name="FavoriId" ColumnName="FavoriId" />
+          <ScalarProperty Name="FavoriUrunId" ColumnName="FavoriUrunId" />
+          <ScalarProperty Name="FavoriKullaniciId" ColumnName="FavoriKullaniciId" />
+          <ScalarProperty Name="FavoriTarih" ColumnName="FavoriTarih" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Isletme">
+      <EntityTypeMapping TypeName="db01Model.Isletme">
+        <MappingFragment StoreEntitySet="Isletme">
+          <ScalarProperty Name="isletmeId" ColumnName="isletmeId" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
+          <ScalarProperty Name="isletmeIsim" ColumnName="isletmeIsim" />
+          <ScalarProperty Name="kategori" ColumnName="kategori" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="parola" ColumnName="parola" />
+          <ScalarProperty Name="TelNo" ColumnName="TelNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ilceler">
+      <EntityTypeMapping TypeName="db01Model.ilceler">
+        <MappingFragment StoreEntitySet="ilceler">
+          <ScalarProperty Name="ilceId" ColumnName="ilceId" />
+          <ScalarProperty Name="ilceIsim" ColumnName="ilceIsim" />
+          <ScalarProperty Name="ilceSehirId" ColumnName="ilceSehirId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanicilar">
+      <EntityTypeMapping TypeName="db01Model.Kullanicilar">
+        <MappingFragment StoreEntitySet="Kullanicilar">
+          <ScalarProperty Name="kullaniciId" ColumnName="kullaniciId" />
+          <ScalarProperty Name="adSoyad" ColumnName="adSoyad" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="parola" ColumnName="parola" />
+          <ScalarProperty Name="kullaniciTel" ColumnName="kullaniciTel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sehirler">
+      <EntityTypeMapping TypeName="db01Model.Sehirler">
+        <MappingFragment StoreEntitySet="Sehirler">
+          <ScalarProperty Name="sehirId" ColumnName="sehirId" />
+          <ScalarProperty Name="sehirIsim" ColumnName="sehirIsim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UrunKayit">
+      <EntityTypeMapping TypeName="db01Model.UrunKayit">
+        <MappingFragment StoreEntitySet="UrunKayit">
+          <ScalarProperty Name="urunId" ColumnName="urunId" />
+          <ScalarProperty Name="aracmarka" ColumnName="aracmarka" />
+          <ScalarProperty Name="durum" ColumnName="durum" />
+          <ScalarProperty Name="marka" ColumnName="marka" />
+          <ScalarProperty Name="ucret" ColumnName="ucret" />
+          <ScalarProperty Name="urunisim" ColumnName="urunisim" />
+          <ScalarProperty Name="isletmeurunId" ColumnName="isletmeurunId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

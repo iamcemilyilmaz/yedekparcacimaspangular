@@ -1,0 +1,31 @@
+.baslik {
+  font-family: "Montserrat" sans-serif;
+  font-size: 35px;
+  color: white;
+}
+.sagKisim {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  color: white;
+}
+.menuRenk {
+  background-color: #0db39e;
+}
+.mt-2 {
+  align-content: center;
+}
+@media only screen and (max-width: 600px) {
+  .sagKisim {
+    display: none;
+  }
+}
+a {
+  font-family: "Montserrat" sans-serif;
+  text-decoration: none;
+  color: black;
+}
+.menu {
+  margin-left: 14px;
+  width: 150px;
+}

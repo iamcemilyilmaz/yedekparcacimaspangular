@@ -1,0 +1,45 @@
+<div class="container">
+  <form ngForm="ngForm" (ngSubmit)="this.urunEkle()">
+<mat-card>
+  <mat-card-title class="baslik"><h1 style="text-align: center;">ÜRÜN EKLEME SAYFASI</h1></mat-card-title>
+
+  <mat-card-content  style="margin-top: 40px;">
+   
+    <mat-form-field appearance="legacy">
+      <mat-label>Ürün Adı</mat-label>
+      <input matInput placeholder="Ürün Adı" [(ngModel)]="urun.urunisim"  name="urunisim">
+      <mat-icon matSuffix>view_in_ar</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Araç Markası</mat-label>
+      <input matInput placeholder="Araç Marka" [(ngModel)]="urun.aracmarka"  name="aracmarka">
+      <mat-icon matSuffix>workspaces</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Ürün Fiyat</mat-label>
+      <input matInput placeholder="Ürün Fiyat" [(ngModel)]="urun.ucret"  name="ucret">
+      <mat-icon matSuffix>attach_money</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Ürün Marka</mat-label>
+      <input matInput placeholder="Ürün Marka"  [(ngModel)]="urun.marka"  name="marka">
+      <mat-icon matSuffix>view_list</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+      <mat-label>Durum</mat-label>
+      <input matInput placeholder="Ürün Marka"  [(ngModel)]="urun.durum"  name="durum">
+      <mat-icon matSuffix>view_list</mat-icon>
+    </mat-form-field>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button style="display:block;background-color: cornflowerblue;color:white;width: 460px;">Paylaş</button>
+  </mat-card-actions>
+</mat-card>
+{{sonucum.mesaj}}
+</form>
+</div>

@@ -1,0 +1,27 @@
+.container {
+  margin: 100px;
+}
+.baslik {
+  font-size: 28px;
+}
+
+.example-card-1 {
+  width: 600px;
+  border: 1px solid green;
+  padding-left: 20px;
+  padding-right: 125px;
+  padding-bottom: 40px;
+  float: right;
+}
+.example-card {
+  border: 1px solid green;
+  padding-left: 110px;
+  padding-right: 125px;
+  padding-bottom: 40px;
+
+  float: left;
+}
+
+.example-header-image {
+  background-size: cover;
+}

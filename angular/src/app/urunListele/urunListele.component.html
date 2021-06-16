@@ -1,0 +1,67 @@
+<form ngForm="ngForm">
+  <div class="genel">
+    <div style="display:inline-block;margin:10px;margin-top: 40px;">
+  <mat-form-field appearance="fill">
+    <mat-label>Kategori Seçiniz</mat-label>
+    <mat-select name="y" [(ngModel)]="this.y">
+      <mat-option value="Kaporta">
+       Kaporta
+      </mat-option>
+      <mat-option value="Motor">
+        Motors
+       </mat-option>
+       <mat-option value="Elektrik Elektronik">
+        Elektrik Elektronik
+       </mat-option>
+       <mat-option value="Aksesuar">
+        Aksesuar
+       </mat-option>
+    </mat-select>
+  </mat-form-field>
+  </div>
+  <div style="display:inline-block;margin:10px;margin-top: 40px;">
+    <mat-form-field appearance="fill">
+    <mat-label>Şehir Seçiniz</mat-label>
+    <mat-select name="x" [(ngModel)]="this.x">
+      <mat-option *ngFor="let item of sehir" value="{{item.sehirIsim}}" >
+       {{item.sehirIsim}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  </div>
+  <div style="display:inline-block;margin:10px">
+    <button mat-button style="display:block;background-color: cornflowerblue;color:white;width: 420px;" 
+    (click)="this.filtreleme(x,y)">Arama Yap</button>
+    {{isletmeIsim}}<br>
+    </div>
+  </div>
+  <div class="card" *ngFor="let item of urun">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{item.isletmeler.isletmeIsim}}</mat-card-title>
+      <mat-card-subtitle>
+        {{item.isletmeler.kategori}} <br>
+        {{item.isletmeler.adres}} <br>{{item.isletmeler.TelNo}}
+      </mat-card-subtitle>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <strong>
+      {{item.aracmarka}}
+      </strong><br><br>
+        <p>Ürün Markası: {{item.marka}}</p>
+        <p>Ürün Adı: {{item.urunisim}}</p>
+        <p>Durum: {{item.durum}}</p>
+      <p>Ürün Fiyatı: {{item.ucret}}</p><br>
+    
+    </mat-card-content>
+    <mat-card-actions>
+     <!-- <button mat-button style="width: 300px;background-color:rgb(189, 44, 44);color:white">Favorilerime Ekle </button> -->
+     <button (click)="this.favoriEkle(item.urunId)" mat-fab color="warn" aria-label="Example icon button with a delete icon">
+      <mat-icon >favorite</mat-icon>
+    </button> <span style="font-size: 17px;"> Favorilere Ekle </span>
+    </mat-card-actions>
+  </mat-card>
+  </div>
+  </form>

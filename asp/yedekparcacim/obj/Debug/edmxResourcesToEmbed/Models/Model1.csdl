@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db01Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Favoriler">
+    <Key>
+      <PropertyRef Name="FavoriId" />
+    </Key>
+    <Property Name="FavoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FavoriUrunId" Type="Int32" Nullable="false" />
+    <Property Name="FavoriKullaniciId" Type="Int32" Nullable="false" />
+    <Property Name="FavoriTarih" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="UrunKayit" Relationship="Self.FK_Favoriler_UrunKayit" FromRole="Favoriler" ToRole="UrunKayit" />
+    <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_Table_Kullanicilar" FromRole="Favoriler" ToRole="Kullanicilar" />
+  </EntityType>
+  <EntityType Name="Isletme">
+    <Key>
+      <PropertyRef Name="isletmeId" />
+    </Key>
+    <Property Name="isletmeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="isletmeIsim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kategori" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="parola" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TelNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="UrunKayit" Relationship="Self.FK_UrunKayit_ToIsletme" FromRole="Isletme" ToRole="UrunKayit" />
+  </EntityType>
+  <EntityType Name="ilceler">
+    <Key>
+      <PropertyRef Name="ilceId" />
+    </Key>
+    <Property Name="ilceId" Type="Int32" Nullable="false" />
+    <Property Name="ilceIsim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ilceSehirId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sehirler" Relationship="Self.FK_ilceler_ToSehirler" FromRole="ilceler" ToRole="Sehirler" />
+  </EntityType>
+  <EntityType Name="Kullanicilar">
+    <Key>
+      <PropertyRef Name="kullaniciId" />
+    </Key>
+    <Property Name="kullaniciId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="parola" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="kullaniciTel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Favoriler" Relationship="Self.FK_Table_Kullanicilar" FromRole="Kullanicilar" ToRole="Favoriler" />
+  </EntityType>
+  <EntityType Name="Sehirler">
+    <Key>
+      <PropertyRef Name="sehirId" />
+    </Key>
+    <Property Name="sehirId" Type="Int32" Nullable="false" />
+    <Property Name="sehirIsim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ilceler" Relationship="Self.FK_ilceler_ToSehirler" FromRole="Sehirler" ToRole="ilceler" />
+  </EntityType>
+  <EntityType Name="UrunKayit">
+    <Key>
+      <PropertyRef Name="urunId" />
+    </Key>
+    <Property Name="urunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="aracmarka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ucret" Type="Int32" Nullable="false" />
+    <Property Name="urunisim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="isletmeurunId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Favoriler" Relationship="Self.FK_Favoriler_UrunKayit" FromRole="UrunKayit" ToRole="Favoriler" />
+    <NavigationProperty Name="Isletme" Relationship="Self.FK_UrunKayit_ToIsletme" FromRole="UrunKayit" ToRole="Isletme" />
+  </EntityType>
+  <Association Name="FK_Favoriler_UrunKayit">
+    <End Role="UrunKayit" Type="Self.UrunKayit" Multiplicity="1" />
+    <End Role="Favoriler" Type="Self.Favoriler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UrunKayit">
+        <PropertyRef Name="urunId" />
+      </Principal>
+      <Dependent Role="Favoriler">
+        <PropertyRef Name="FavoriUrunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_Kullanicilar">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
+    <End Role="Favoriler" Type="Self.Favoriler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="kullaniciId" />
+      </Principal>
+      <Dependent Role="Favoriler">
+        <PropertyRef Name="FavoriKullaniciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UrunKayit_ToIsletme">
+    <End Role="Isletme" Type="Self.Isletme" Multiplicity="1" />
+    <End Role="UrunKayit" Type="Self.UrunKayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Isletme">
+        <PropertyRef Name="isletmeId" />
+      </Principal>
+      <Dependent Role="UrunKayit">
+        <PropertyRef Name="isletmeurunId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ilceler_ToSehirler">
+    <End Role="Sehirler" Type="Self.Sehirler" Multiplicity="1" />
+    <End Role="ilceler" Type="Self.ilceler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sehirler">
+        <PropertyRef Name="sehirId" />
+      </Principal>
+      <Dependent Role="ilceler">
+        <PropertyRef Name="ilceSehirId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db01Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Favoriler" EntityType="Self.Favoriler" />
+    <EntitySet Name="Isletme" EntityType="Self.Isletme" />
+    <EntitySet Name="ilceler" EntityType="Self.ilceler" />
+    <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
+    <EntitySet Name="Sehirler" EntityType="Self.Sehirler" />
+    <EntitySet Name="UrunKayit" EntityType="Self.UrunKayit" />
+    <AssociationSet Name="FK_Favoriler_UrunKayit" Association="Self.FK_Favoriler_UrunKayit">
+      <End Role="UrunKayit" EntitySet="UrunKayit" />
+      <End Role="Favoriler" EntitySet="Favoriler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_Kullanicilar" Association="Self.FK_Table_Kullanicilar">
+      <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+      <End Role="Favoriler" EntitySet="Favoriler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UrunKayit_ToIsletme" Association="Self.FK_UrunKayit_ToIsletme">
+      <End Role="Isletme" EntitySet="Isletme" />
+      <End Role="UrunKayit" EntitySet="UrunKayit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ilceler_ToSehirler" Association="Self.FK_ilceler_ToSehirler">
+      <End Role="Sehirler" EntitySet="Sehirler" />
+      <End Role="ilceler" EntitySet="ilceler" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
